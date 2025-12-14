@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { CreditCard, QrCode, Smartphone, Globe, Shield, Zap, ArrowRight, Bird } from "lucide-react";
+import { CreditCard, QrCode, Smartphone, Globe, Shield, Zap, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Home() {
@@ -13,19 +13,14 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-5">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-zinc-900 group-hover:bg-zinc-800 transition-colors">
-                <Bird className="text-white !w-full !h-[23px]" />
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-zinc-900 to-zinc-700 group-hover:from-zinc-800 group-hover:to-zinc-600 transition-all shadow-md">
+                <CreditCard className="text-white h-6 w-6" />
               </div>
-              <span className="text-2xl font-semibold tracking-tight text-zinc-900">
+              <span className="text-2xl font-bold tracking-tight text-zinc-900">
                 Tailows Pay
               </span>
             </Link>
             <div className="flex items-center gap-3">
-              <Link href="/signin">
-                <Button variant="ghost" className="text-zinc-700 hover:text-zinc-900 hover:bg-zinc-100">
-                  Sign In
-                </Button>
-              </Link>
               <Link href="/signin">
                 <Button className="bg-zinc-900 text-white hover:bg-zinc-800 shadow-sm">
                   Get Started
