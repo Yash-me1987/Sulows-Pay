@@ -50,12 +50,11 @@ export default function SignInPage() {
           <div className="grid gap-6 md:grid-cols-2">
             <div>
               <Card 
-                className={`border-2 cursor-pointer transition-all duration-200 h-full ${
+                className={`border-2 transition-all duration-200 h-full ${
                   selectedRole === "acceptor" 
                     ? "border-zinc-900 bg-zinc-50 shadow-lg" 
-                    : "border-zinc-200 bg-white hover:border-zinc-400 hover:shadow-md"
+                    : "border-zinc-200 bg-white"
                 }`}
-                onClick={() => setSelectedRole("acceptor")}
               >
                 <CardHeader className="text-center pb-4">
                   <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-zinc-900 shadow-lg">
@@ -98,12 +97,11 @@ export default function SignInPage() {
 
             <div>
               <Card 
-                className={`border-2 cursor-pointer transition-all duration-200 h-full ${
+                className={`border-2 transition-all duration-200 h-full ${
                   selectedRole === "user" 
                     ? "border-zinc-900 bg-zinc-50 shadow-lg" 
-                    : "border-zinc-200 bg-white hover:border-zinc-400 hover:shadow-md"
+                    : "border-zinc-200 bg-white"
                 }`}
-                onClick={() => setSelectedRole("user")}
               >
                 <CardHeader className="text-center pb-4">
                   <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-zinc-900 shadow-lg">
