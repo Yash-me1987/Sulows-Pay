@@ -13,7 +13,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-5">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-zinc-900 to-zinc-700 group-hover:from-zinc-800 group-hover:to-zinc-600 transition-all shadow-md">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-zinc-900 to-zinc-700 group-hover:from-zinc-800 group-hover:to-zinc-600 transition-all shadow-md will-change-transform">
                 <CreditCard className="text-white h-6 w-6" />
               </div>
               <span className="text-2xl font-bold tracking-tight text-zinc-900">
@@ -34,10 +34,10 @@ export default function Home() {
       <main className="pt-20">
         <section className="mx-auto max-w-7xl px-6 lg:px-8 pt-24 pb-20">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="text-center">
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="text-center will-change-transform">
 
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-1.5 text-sm font-medium text-zinc-700 shadow-sm">
               <Zap className="h-3.5 w-3.5 text-amber-600" />
@@ -67,9 +67,10 @@ export default function Home() {
         <section className="bg-white border-y border-zinc-200 py-20">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}>
+              transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
+              className="will-change-transform">
 
               <div className="mb-16 text-center">
                 <h2 className="text-4xl font-bold tracking-tight text-zinc-900 md:text-5xl">
@@ -81,7 +82,7 @@ export default function Home() {
               </div>
 
               <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                <Card className="border-zinc-200 bg-white shadow-sm hover:shadow-md transition-shadow">
+                <Card className="border-zinc-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-200">
                   <CardHeader className="space-y-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100">
                       <Smartphone className="h-6 w-6 text-emerald-700" />
@@ -95,7 +96,7 @@ export default function Home() {
                   </CardHeader>
                 </Card>
 
-                <Card className="border-zinc-200 bg-white shadow-sm hover:shadow-md transition-shadow">
+                <Card className="border-zinc-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-200">
                   <CardHeader className="space-y-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100">
                       <QrCode className="h-6 w-6 text-blue-700" />
@@ -109,7 +110,7 @@ export default function Home() {
                   </CardHeader>
                 </Card>
 
-                <Card className="border-zinc-200 bg-white shadow-sm hover:shadow-md transition-shadow">
+                <Card className="border-zinc-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-200">
                   <CardHeader className="space-y-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-100">
                       <CreditCard className="h-6 w-6 text-amber-700" />
@@ -123,7 +124,7 @@ export default function Home() {
                   </CardHeader>
                 </Card>
 
-                <Card className="border-zinc-200 bg-white shadow-sm hover:shadow-md transition-shadow">
+                <Card className="border-zinc-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-200">
                   <CardHeader className="space-y-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-100">
                       <Globe className="h-6 w-6 text-violet-700" />
@@ -137,7 +138,7 @@ export default function Home() {
                   </CardHeader>
                 </Card>
 
-                <Card className="border-zinc-200 bg-white shadow-sm hover:shadow-md transition-shadow">
+                <Card className="border-zinc-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-200">
                   <CardHeader className="space-y-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-rose-100">
                       <Shield className="h-6 w-6 text-rose-700" />
@@ -151,7 +152,7 @@ export default function Home() {
                   </CardHeader>
                 </Card>
 
-                <Card className="border-zinc-200 bg-white shadow-sm hover:shadow-md transition-shadow">
+                <Card className="border-zinc-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-200">
                   <CardHeader className="space-y-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-100">
                       <Zap className="h-6 w-6 text-cyan-700" />
