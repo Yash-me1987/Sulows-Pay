@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { CreditCard, QrCode, Smartphone, Globe, Shield, Zap, LogOut } from "lucide-react";
+import { CreditCard, QrCode, Smartphone, Globe, Shield, Zap, LogOut, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { getUserRole, signOut } from "@/lib/auth";
 
@@ -34,38 +34,36 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%239C92AC%22%20fill-opacity%3D%220.05%22%3E%3Cpath%20d%3D%22M36%2034v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6%2034v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6%204V0H4v4H0v2h4v4h2V6h4V4H6z%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-30" />
-      
-      <nav className="relative z-10 border-b border-white/10 backdrop-blur-xl">
-        <div className="mx-auto max-w-7xl px-6 py-4">
+    <div className="min-h-screen bg-zinc-50">
+      <nav className="border-b border-zinc-200 bg-white/80 backdrop-blur-md">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-5">
           <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 shadow-lg shadow-violet-500/25">
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-zinc-900 group-hover:bg-zinc-800 transition-colors">
                 <CreditCard className="h-5 w-5 text-white" />
               </div>
-              <span className="text-xl font-bold tracking-tight text-white" style={{ fontFamily: "system-ui" }}>
+              <span className="text-2xl font-semibold tracking-tight text-zinc-900">
                 PayForm
               </span>
             </Link>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               {userRole === "acceptor" && (
                 <>
                   <Link href="/my-forms">
-                    <Button variant="outline" className="border-white/20 text-white hover:bg-white/10">
+                    <Button variant="ghost" className="text-zinc-700 hover:text-zinc-900 hover:bg-zinc-100">
                       My Forms
                     </Button>
                   </Link>
                   <Link href="/create">
-                    <Button className="bg-gradient-to-r from-violet-600 to-indigo-600 text-white hover:from-violet-700 hover:to-indigo-700 shadow-lg shadow-violet-500/25">
+                    <Button className="bg-zinc-900 text-white hover:bg-zinc-800 shadow-sm">
                       Create Form
                     </Button>
                   </Link>
                 </>
               )}
               <Button 
-                variant="outline" 
-                className="border-white/20 text-white hover:bg-white/10"
+                variant="ghost" 
+                className="text-zinc-700 hover:text-zinc-900 hover:bg-zinc-100"
                 onClick={handleSignOut}
               >
                 <LogOut className="mr-2 h-4 w-4" />
@@ -76,36 +74,38 @@ export default function Home() {
         </div>
       </nav>
 
-      <main className="relative z-10">
-        <section className="mx-auto max-w-7xl px-6 py-24 text-center">
+      <main>
+        <section className="mx-auto max-w-7xl px-6 lg:px-8 pt-24 pb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7 }}
+            className="text-center"
           >
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-4 py-2 text-sm text-violet-300">
-              <Zap className="h-4 w-4" />
-              Accept payments in minutes
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-1.5 text-sm font-medium text-zinc-700 shadow-sm">
+              <Zap className="h-3.5 w-3.5 text-amber-600" />
+              Professional Payment Solutions
             </div>
-            <h1 className="mx-auto max-w-4xl text-5xl font-bold leading-tight tracking-tight text-white md:text-7xl" style={{ fontFamily: "system-ui" }}>
-              Create Custom{" "}
-              <span className="bg-gradient-to-r from-violet-400 via-indigo-400 to-cyan-400 bg-clip-text text-transparent">
-                Payment Forms
-              </span>{" "}
-              Instantly
+            <h1 className="mx-auto max-w-5xl text-6xl font-bold leading-tight tracking-tight text-zinc-900 md:text-7xl lg:text-8xl">
+              Custom Payment
+              <br />
+              <span className="text-zinc-400">
+                Forms Made Simple
+              </span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400 md:text-xl">
-              Build personalized payment acceptance forms with UPI, QR codes, cards, and net banking. 
-              Perfect for freelancers, businesses, and international transactions.
+            <p className="mx-auto mt-8 max-w-2xl text-xl leading-relaxed text-zinc-600">
+              Professional payment acceptance for freelancers, agencies, and businesses. 
+              Create elegant forms with UPI, QR codes, cards, and international support.
             </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link href="/create">
-                <Button size="lg" className="h-14 px-8 text-lg bg-gradient-to-r from-violet-600 to-indigo-600 text-white hover:from-violet-700 hover:to-indigo-700 shadow-xl shadow-violet-500/30">
+                <Button size="lg" className="h-12 px-8 text-base bg-zinc-900 text-white hover:bg-zinc-800 shadow-lg group">
                   Create Your Form
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
                 </Button>
               </Link>
               <Link href="/my-forms">
-                <Button size="lg" variant="outline" className="h-14 px-8 text-lg border-white/20 text-white hover:bg-white/10">
+                <Button size="lg" variant="outline" className="h-12 px-8 text-base border-zinc-300 text-zinc-700 hover:bg-zinc-50">
                   View My Forms
                 </Button>
               </Link>
@@ -113,102 +113,126 @@ export default function Home() {
           </motion.div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-6 py-16">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-          >
-            <Card className="border-white/10 bg-white/5 backdrop-blur-xl">
-              <CardHeader>
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 shadow-lg shadow-green-500/25">
-                  <Smartphone className="h-6 w-6 text-white" />
-                </div>
-                <CardTitle className="text-white">UPI Payments</CardTitle>
-                <CardDescription className="text-slate-400">
-                  Accept instant UPI payments with your verified UPI ID. Perfect for domestic transactions.
-                </CardDescription>
-              </CardHeader>
-            </Card>
+        <section className="bg-white border-y border-zinc-200 py-20">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+            >
+              <div className="mb-16 text-center">
+                <h2 className="text-4xl font-bold tracking-tight text-zinc-900 md:text-5xl">
+                  Everything you need
+                </h2>
+                <p className="mt-4 text-lg text-zinc-600">
+                  Powerful features for seamless payment collection
+                </p>
+              </div>
 
-            <Card className="border-white/10 bg-white/5 backdrop-blur-xl">
-              <CardHeader>
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 shadow-lg shadow-blue-500/25">
-                  <QrCode className="h-6 w-6 text-white" />
-                </div>
-                <CardTitle className="text-white">QR Code Scanning</CardTitle>
-                <CardDescription className="text-slate-400">
-                  Upload your payment QR code for quick scan-and-pay experience for your customers.
-                </CardDescription>
-              </CardHeader>
-            </Card>
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <Card className="border-zinc-200 bg-white shadow-sm hover:shadow-md transition-shadow">
+                  <CardHeader className="space-y-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100">
+                      <Smartphone className="h-6 w-6 text-emerald-700" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl font-semibold text-zinc-900">UPI Payments</CardTitle>
+                      <CardDescription className="mt-2 text-zinc-600">
+                        Accept instant UPI payments with your verified UPI ID. Perfect for domestic transactions.
+                      </CardDescription>
+                    </div>
+                  </CardHeader>
+                </Card>
 
-            <Card className="border-white/10 bg-white/5 backdrop-blur-xl">
-              <CardHeader>
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-amber-600 shadow-lg shadow-orange-500/25">
-                  <CreditCard className="h-6 w-6 text-white" />
-                </div>
-                <CardTitle className="text-white">Card & Net Banking</CardTitle>
-                <CardDescription className="text-slate-400">
-                  Accept debit/credit cards and net banking payments for flexibility.
-                </CardDescription>
-              </CardHeader>
-            </Card>
+                <Card className="border-zinc-200 bg-white shadow-sm hover:shadow-md transition-shadow">
+                  <CardHeader className="space-y-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100">
+                      <QrCode className="h-6 w-6 text-blue-700" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl font-semibold text-zinc-900">QR Code Scanning</CardTitle>
+                      <CardDescription className="mt-2 text-zinc-600">
+                        Upload your payment QR code for quick scan-and-pay experience for your customers.
+                      </CardDescription>
+                    </div>
+                  </CardHeader>
+                </Card>
 
-            <Card className="border-white/10 bg-white/5 backdrop-blur-xl">
-              <CardHeader>
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 shadow-lg shadow-purple-500/25">
-                  <Globe className="h-6 w-6 text-white" />
-                </div>
-                <CardTitle className="text-white">International Payments</CardTitle>
-                <CardDescription className="text-slate-400">
-                  Support multiple currencies including USD, EUR, GBP for global transactions.
-                </CardDescription>
-              </CardHeader>
-            </Card>
+                <Card className="border-zinc-200 bg-white shadow-sm hover:shadow-md transition-shadow">
+                  <CardHeader className="space-y-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-100">
+                      <CreditCard className="h-6 w-6 text-amber-700" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl font-semibold text-zinc-900">Card & Net Banking</CardTitle>
+                      <CardDescription className="mt-2 text-zinc-600">
+                        Accept debit/credit cards and net banking payments for complete flexibility.
+                      </CardDescription>
+                    </div>
+                  </CardHeader>
+                </Card>
 
-            <Card className="border-white/10 bg-white/5 backdrop-blur-xl">
-              <CardHeader>
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-rose-500 to-red-600 shadow-lg shadow-rose-500/25">
-                  <Shield className="h-6 w-6 text-white" />
-                </div>
-                <CardTitle className="text-white">Secure & Private</CardTitle>
-                <CardDescription className="text-slate-400">
-                  All data stored locally on your device. No server-side storage for maximum privacy.
-                </CardDescription>
-              </CardHeader>
-            </Card>
+                <Card className="border-zinc-200 bg-white shadow-sm hover:shadow-md transition-shadow">
+                  <CardHeader className="space-y-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-100">
+                      <Globe className="h-6 w-6 text-violet-700" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl font-semibold text-zinc-900">International Payments</CardTitle>
+                      <CardDescription className="mt-2 text-zinc-600">
+                        Support multiple currencies including USD, EUR, GBP for global transactions.
+                      </CardDescription>
+                    </div>
+                  </CardHeader>
+                </Card>
 
-            <Card className="border-white/10 bg-white/5 backdrop-blur-xl">
-              <CardHeader>
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-teal-500 to-cyan-600 shadow-lg shadow-teal-500/25">
-                  <Zap className="h-6 w-6 text-white" />
-                </div>
-                <CardTitle className="text-white">Instant Setup</CardTitle>
-                <CardDescription className="text-slate-400">
-                  Create and share your payment form in under 2 minutes. No signup required.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </motion.div>
+                <Card className="border-zinc-200 bg-white shadow-sm hover:shadow-md transition-shadow">
+                  <CardHeader className="space-y-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-rose-100">
+                      <Shield className="h-6 w-6 text-rose-700" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl font-semibold text-zinc-900">Secure & Private</CardTitle>
+                      <CardDescription className="mt-2 text-zinc-600">
+                        All data stored locally on your device. No server storage for maximum privacy.
+                      </CardDescription>
+                    </div>
+                  </CardHeader>
+                </Card>
+
+                <Card className="border-zinc-200 bg-white shadow-sm hover:shadow-md transition-shadow">
+                  <CardHeader className="space-y-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-100">
+                      <Zap className="h-6 w-6 text-cyan-700" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl font-semibold text-zinc-900">Instant Setup</CardTitle>
+                      <CardDescription className="mt-2 text-zinc-600">
+                        Create and share your payment form in under 2 minutes. No signup required.
+                      </CardDescription>
+                    </div>
+                  </CardHeader>
+                </Card>
+              </div>
+            </motion.div>
+          </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-6 py-16">
+        <section className="mx-auto max-w-7xl px-6 lg:px-8 py-20">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="rounded-3xl border border-white/10 bg-gradient-to-br from-violet-600/20 to-indigo-600/20 p-12 text-center backdrop-blur-xl"
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="rounded-3xl border border-zinc-200 bg-zinc-900 p-12 text-center shadow-xl lg:p-16"
           >
-            <h2 className="text-3xl font-bold text-white md:text-4xl" style={{ fontFamily: "system-ui" }}>
-              Ready to accept payments?
+            <h2 className="text-4xl font-bold text-white md:text-5xl">
+              Ready to get started?
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-slate-400">
+            <p className="mx-auto mt-6 max-w-xl text-lg text-zinc-400">
               Create your custom payment form now and start receiving payments from anywhere in the world.
             </p>
-            <Link href="/create" className="mt-8 inline-block">
-              <Button size="lg" className="h-14 px-10 text-lg bg-white text-slate-900 hover:bg-slate-100">
+            <Link href="/create" className="mt-10 inline-block">
+              <Button size="lg" className="h-12 px-10 text-base bg-white text-zinc-900 hover:bg-zinc-100 shadow-lg">
                 Get Started Free
               </Button>
             </Link>
@@ -216,9 +240,11 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="relative z-10 border-t border-white/10 py-8">
-        <div className="mx-auto max-w-7xl px-6 text-center text-sm text-slate-500">
-          <p>PayForm - Create custom payment acceptance forms instantly.</p>
+      <footer className="border-t border-zinc-200 bg-white py-12">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
+          <p className="text-sm text-zinc-600">
+            © 2024 PayForm. Professional payment acceptance made simple.
+          </p>
         </div>
       </footer>
     </div>
