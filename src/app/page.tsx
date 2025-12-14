@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { CreditCard, QrCode, Smartphone, Globe, Shield, Zap, ArrowRight } from "lucide-react";
+import { CreditCard, QrCode, Smartphone, Globe, Shield, Zap, ArrowRight, Bird } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Home() {
@@ -14,10 +14,10 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3 group">
               <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-zinc-900 group-hover:bg-zinc-800 transition-colors">
-                <CreditCard className="h-5 w-5 text-white" />
+                <Bird className="h-5 w-5 text-white" />
               </div>
               <span className="text-2xl font-semibold tracking-tight text-zinc-900">
-                PayForm
+                Tailows Pay
               </span>
             </Link>
             <div className="flex items-center gap-3">
@@ -199,7 +199,7 @@ export default function Home() {
       <footer className="border-t border-zinc-200 bg-white py-12">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
           <p className="text-sm text-zinc-600">
-            © 2024 PayForm. Professional payment acceptance made simple.
+            © 2024 Tailows Pay. Professional payment acceptance made simple.
           </p>
         </div>
       </footer>
