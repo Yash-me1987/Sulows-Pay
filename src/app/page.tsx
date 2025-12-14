@@ -172,10 +172,10 @@ export default function Home() {
 
         <section className="mx-auto max-w-7xl px-6 lg:px-8 py-20">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="rounded-3xl border border-zinc-200 bg-zinc-900 p-12 text-center shadow-xl lg:p-16">
+            transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
+            className="rounded-3xl border border-zinc-200 bg-zinc-900 p-12 text-center shadow-xl lg:p-16 will-change-transform">
 
             <h2 className="text-4xl font-bold text-white md:text-5xl">
               Ready to get started?
