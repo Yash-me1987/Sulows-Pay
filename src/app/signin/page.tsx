@@ -12,19 +12,11 @@ export default function SignInPage() {
   const [selectedRole, setSelectedRole] = useState<"acceptor" | "user" | null>(null);
 
   useEffect(() => {
-    router.prefetch("/my-forms");
-    router.prefetch("/");
+    router.prefetch("/signup");
   }, [router]);
 
   const handleSignIn = (role: "acceptor" | "user") => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("user_role", role);
-      if (role === "acceptor") {
-        router.push("/my-forms");
-      } else {
-        router.push("/");
-      }
-    }
+    router.push(`/signup?role=${role}`);
   };
 
   return (
