@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -14,10 +14,12 @@ import { CreditCard, ArrowLeft, Upload, Check, Globe, Smartphone } from "lucide-
 import { motion } from "framer-motion";
 import { addForm, generateId } from "@/lib/storage";
 import { PaymentForm } from "@/lib/types";
+import { getUserRole } from "@/lib/auth";
 
 export default function CreateFormPage() {
   const router = useRouter();
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isLoading, setIsLoading] = useState(true);
   
   const [formData, setFormData] = useState({
     name: "",
@@ -32,6 +34,15 @@ export default function CreateFormPage() {
   });
 
   const [qrPreview, setQrPreview] = useState<string | null>(null);
+
+  useEffect(() => {
+    const role = getUserRole();
+    if (role !== "acceptor") {
+      router.push("/signin");
+    } else {
+      setIsLoading(false);
+    }
+  }, [router]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -65,6 +76,10 @@ export default function CreateFormPage() {
   };
 
   const isFormValid = formData.name && formData.email && formData.businessName && (formData.upiId || formData.qrCodeUrl);
+
+  if (isLoading) {
+    return null;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950">
