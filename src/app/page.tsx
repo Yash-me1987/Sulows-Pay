@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { CreditCard, QrCode, Smartphone, Globe, Shield, Zap, ArrowRight } from "lucide-react";
+import { CreditCard, QrCode, Smartphone, Globe, Shield, Zap, ArrowRight, Bird } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3 group">
               <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-zinc-900 to-zinc-700 group-hover:from-zinc-800 group-hover:to-zinc-600 transition-all shadow-md will-change-transform">
-                <CreditCard className="text-white h-6 w-6" />
+                <Bird className="text-white h-6 w-6" />
               </div>
               <span className="text-2xl font-bold tracking-tight text-zinc-900">
                 Tailows Pay
