@@ -15,6 +15,7 @@ export default function SignUpPage() {
   const searchParams = useSearchParams();
   const role = searchParams.get("role") as "user" | "acceptor" | null;
 
+  const [mounted, setMounted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -25,13 +26,17 @@ export default function SignUpPage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    if (!role || (role !== "user" && role !== "acceptor")) {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (mounted && (!role || (role !== "user" && role !== "acceptor"))) {
       router.push("/signin");
-    } else {
+    } else if (mounted) {
       router.prefetch("/");
       router.prefetch("/my-forms");
     }
-  }, [role, router]);
+  }, [role, router, mounted]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -86,6 +91,10 @@ export default function SignUpPage() {
       [e.target.name]: e.target.value,
     });
   };
+
+  if (!mounted) {
+    return null;
+  }
 
   if (!role) return null;
 
