@@ -1,16 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Store, User, Bird } from "lucide-react";
-import { motion } from "framer-motion";
 
 export default function SignInPage() {
   const router = useRouter();
   const [selectedRole, setSelectedRole] = useState<"acceptor" | "user" | null>(null);
+
+  useEffect(() => {
+    router.prefetch("/my-forms");
+    router.prefetch("/");
+  }, [router]);
 
   const handleSignIn = (role: "acceptor" | "user") => {
     if (typeof window !== "undefined") {
@@ -41,12 +45,7 @@ export default function SignInPage() {
       </nav>
 
       <main className="flex items-center justify-center px-6 py-12 min-h-[calc(100vh-80px)]">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="w-full max-w-5xl"
-        >
+        <div className="w-full max-w-5xl">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-zinc-900 md:text-5xl mb-4">
               Welcome to <span className="text-zinc-400">Tailows Pay</span>
@@ -57,13 +56,9 @@ export default function SignInPage() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
+            <div>
               <Card 
-                className={`border-2 cursor-pointer transition-all duration-300 h-full ${
+                className={`border-2 cursor-pointer transition-all duration-200 h-full ${
                   selectedRole === "acceptor" 
                     ? "border-zinc-900 bg-zinc-50 shadow-lg" 
                     : "border-zinc-200 bg-white hover:border-zinc-400 hover:shadow-md"
@@ -107,15 +102,11 @@ export default function SignInPage() {
                   </Button>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
+            <div>
               <Card 
-                className={`border-2 cursor-pointer transition-all duration-300 h-full ${
+                className={`border-2 cursor-pointer transition-all duration-200 h-full ${
                   selectedRole === "user" 
                     ? "border-zinc-900 bg-zinc-50 shadow-lg" 
                     : "border-zinc-200 bg-white hover:border-zinc-400 hover:shadow-md"
@@ -159,9 +150,9 @@ export default function SignInPage() {
                   </Button>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </main>
     </div>
   );
