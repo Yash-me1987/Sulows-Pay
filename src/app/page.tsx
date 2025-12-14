@@ -1,41 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { CreditCard, QrCode, Smartphone, Globe, Shield, Zap, LogOut, ArrowRight } from "lucide-react";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { CreditCard, QrCode, Smartphone, Globe, Shield, Zap, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { getUserRole, signOut } from "@/lib/auth";
 
 export default function Home() {
-  const router = useRouter();
-  const [userRole, setUserRole] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const role = getUserRole();
-    if (!role) {
-      router.push("/signin");
-    } else {
-      setUserRole(role);
-      setIsLoading(false);
-    }
-  }, [router]);
-
-  const handleSignOut = () => {
-    signOut();
-    router.push("/signin");
-  };
-
-  if (isLoading) {
-    return null;
-  }
-
   return (
     <div className="min-h-screen bg-zinc-50">
-      <nav className="border-b border-zinc-200 bg-white/80 backdrop-blur-md">
+      <nav className="border-b border-zinc-200 bg-white/80 backdrop-blur-md fixed w-full z-50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-5">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3 group">
@@ -47,34 +21,22 @@ export default function Home() {
               </span>
             </Link>
             <div className="flex items-center gap-3">
-              {userRole === "acceptor" && (
-                <>
-                  <Link href="/my-forms">
-                    <Button variant="ghost" className="text-zinc-700 hover:text-zinc-900 hover:bg-zinc-100">
-                      My Forms
-                    </Button>
-                  </Link>
-                  <Link href="/create">
-                    <Button className="bg-zinc-900 text-white hover:bg-zinc-800 shadow-sm">
-                      Create Form
-                    </Button>
-                  </Link>
-                </>
-              )}
-              <Button 
-                variant="ghost" 
-                className="text-zinc-700 hover:text-zinc-900 hover:bg-zinc-100"
-                onClick={handleSignOut}
-              >
-                <LogOut className="mr-2 h-4 w-4" />
-                Sign Out
-              </Button>
+              <Link href="/signin">
+                <Button variant="ghost" className="text-zinc-700 hover:text-zinc-900 hover:bg-zinc-100">
+                  Sign In
+                </Button>
+              </Link>
+              <Link href="/signin">
+                <Button className="bg-zinc-900 text-white hover:bg-zinc-800 shadow-sm">
+                  Get Started
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
       </nav>
 
-      <main>
+      <main className="pt-20">
         <section className="mx-auto max-w-7xl px-6 lg:px-8 pt-24 pb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -87,26 +49,20 @@ export default function Home() {
               Professional Payment Solutions
             </div>
             <h1 className="mx-auto max-w-5xl text-6xl font-bold leading-tight tracking-tight text-zinc-900 md:text-7xl lg:text-8xl">
-              Custom Payment
+              Accept Payments
               <br />
               <span className="text-zinc-400">
-                Forms Made Simple
+                Your Way
               </span>
             </h1>
             <p className="mx-auto mt-8 max-w-2xl text-xl leading-relaxed text-zinc-600">
-              Professional payment acceptance for freelancers, agencies, and businesses. 
-              Create elegant forms with UPI, QR codes, cards, and international support.
+              Create beautiful, customized payment forms in minutes. Support UPI, cards, QR codes, and international payments—all from one elegant platform.
             </p>
             <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link href="/create">
+              <Link href="/signin">
                 <Button size="lg" className="h-12 px-8 text-base bg-zinc-900 text-white hover:bg-zinc-800 shadow-lg group">
-                  Create Your Form
+                  Start Accepting Payments
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
-                </Button>
-              </Link>
-              <Link href="/my-forms">
-                <Button size="lg" variant="outline" className="h-12 px-8 text-base border-zinc-300 text-zinc-700 hover:bg-zinc-50">
-                  View My Forms
                 </Button>
               </Link>
             </div>
@@ -231,7 +187,7 @@ export default function Home() {
             <p className="mx-auto mt-6 max-w-xl text-lg text-zinc-400">
               Create your custom payment form now and start receiving payments from anywhere in the world.
             </p>
-            <Link href="/create" className="mt-10 inline-block">
+            <Link href="/signin" className="mt-10 inline-block">
               <Button size="lg" className="h-12 px-10 text-base bg-white text-zinc-900 hover:bg-zinc-100 shadow-lg">
                 Get Started Free
               </Button>
