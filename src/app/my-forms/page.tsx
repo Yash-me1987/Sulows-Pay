@@ -6,7 +6,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Plus, ExternalLink, Copy, Trash2, QrCode, Smartphone, Bird } from "lucide-react";
-import { motion } from "framer-motion";
 import { getForms, deleteForm } from "@/lib/storage";
 import { PaymentForm } from "@/lib/types";
 import { getUserRole } from "@/lib/auth";
@@ -18,6 +17,7 @@ export default function MyFormsPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    router.prefetch("/create");
     const role = getUserRole();
     if (role !== "acceptor") {
       router.push("/signin");
@@ -45,7 +45,28 @@ export default function MyFormsPage() {
   };
 
   if (isLoading) {
-    return null;
+    return (
+      <div className="min-h-screen bg-zinc-50">
+        <nav className="border-b border-zinc-200 bg-white/80 backdrop-blur-md">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8 py-5">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-zinc-900">
+                  <Bird className="h-5 w-5 text-white" />
+                </div>
+                <span className="text-2xl font-semibold tracking-tight text-zinc-900">Tailows Pay</span>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <main className="mx-auto max-w-7xl px-6 py-12">
+          <div className="animate-pulse space-y-6">
+            <div className="h-8 w-64 bg-zinc-200 rounded"></div>
+            <div className="h-4 w-96 bg-zinc-200 rounded"></div>
+          </div>
+        </main>
+      </div>
+    );
   }
 
   return (
@@ -70,11 +91,7 @@ export default function MyFormsPage() {
       </nav>
 
       <main className="mx-auto max-w-7xl px-6 py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <div>
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-zinc-900 md:text-4xl">My Payment Forms</h1>
             <p className="mt-2 text-zinc-600">Manage and share your payment acceptance forms</p>
@@ -100,13 +117,8 @@ export default function MyFormsPage() {
             </Card>
           ) : (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {forms.map((form, index) => (
-                <motion.div
-                  key={form.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                >
+              {forms.map((form) => (
+                <div key={form.id}>
                   <Card className="border-zinc-200 bg-white shadow-sm hover:shadow-md transition-shadow overflow-hidden">
                     <CardHeader className="pb-4">
                       <div className="flex items-start justify-between">
@@ -180,11 +192,11 @@ export default function MyFormsPage() {
                       </div>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </div>
               ))}
             </div>
           )}
-        </motion.div>
+        </div>
       </main>
     </div>
   );
