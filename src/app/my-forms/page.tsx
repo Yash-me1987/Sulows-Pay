@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,14 +9,23 @@ import { CreditCard, Plus, ExternalLink, Copy, Trash2, QrCode, Smartphone } from
 import { motion } from "framer-motion";
 import { getForms, deleteForm } from "@/lib/storage";
 import { PaymentForm } from "@/lib/types";
+import { getUserRole } from "@/lib/auth";
 
 export default function MyFormsPage() {
+  const router = useRouter();
   const [forms, setForms] = useState<PaymentForm[]>([]);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setForms(getForms());
-  }, []);
+    const role = getUserRole();
+    if (role !== "acceptor") {
+      router.push("/signin");
+    } else {
+      setForms(getForms());
+      setIsLoading(false);
+    }
+  }, [router]);
 
   const handleDelete = (id: string) => {
     deleteForm(id);
@@ -33,6 +43,10 @@ export default function MyFormsPage() {
     const symbols: Record<string, string> = { INR: "₹", USD: "$", EUR: "€", GBP: "£" };
     return symbols[currency] || currency;
   };
+
+  if (isLoading) {
+    return null;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-950">
