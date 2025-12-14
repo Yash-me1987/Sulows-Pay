@@ -14,7 +14,7 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3 group">
               <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-zinc-900 group-hover:bg-zinc-800 transition-colors">
-                <Bird className="h-5 w-5 text-white" />
+                <Bird className="text-white !w-full !h-[23px]" />
               </div>
               <span className="text-2xl font-semibold tracking-tight text-zinc-900">
                 Tailows Pay
@@ -42,8 +42,8 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="text-center"
-          >
+            className="text-center">
+
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-4 py-1.5 text-sm font-medium text-zinc-700 shadow-sm">
               <Zap className="h-3.5 w-3.5 text-amber-600" />
               Professional Payment Solutions
@@ -74,8 +74,8 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-            >
+              transition={{ duration: 0.7, delay: 0.2 }}>
+
               <div className="mb-16 text-center">
                 <h2 className="text-4xl font-bold tracking-tight text-zinc-900 md:text-5xl">
                   Everything you need
@@ -179,8 +179,8 @@ export default function Home() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="rounded-3xl border border-zinc-200 bg-zinc-900 p-12 text-center shadow-xl lg:p-16"
-          >
+            className="rounded-3xl border border-zinc-200 bg-zinc-900 p-12 text-center shadow-xl lg:p-16">
+
             <h2 className="text-4xl font-bold text-white md:text-5xl">
               Ready to get started?
             </h2>
@@ -203,6 +203,6 @@ export default function Home() {
           </p>
         </div>
       </footer>
-    </div>
-  );
+    </div>);
+
 }
