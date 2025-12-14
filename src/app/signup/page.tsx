@@ -27,6 +27,9 @@ export default function SignUpPage() {
   useEffect(() => {
     if (!role || (role !== "user" && role !== "acceptor")) {
       router.push("/signin");
+    } else {
+      router.prefetch("/");
+      router.prefetch("/my-forms");
     }
   }, [role, router]);
 
