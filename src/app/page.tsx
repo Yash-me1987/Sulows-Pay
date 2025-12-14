@@ -1,11 +1,19 @@
 "use client";
 
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CreditCard, QrCode, Smartphone, Globe, Shield, Zap, ArrowRight, Bird } from "lucide-react";
 
 export default function Home() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.prefetch("/signin");
+  }, [router]);
+
   return (
     <div className="min-h-screen bg-zinc-50">
       <nav className="border-b border-zinc-200 bg-white/80 backdrop-blur-md fixed w-full z-50">
@@ -186,6 +194,6 @@ export default function Home() {
           </p>
         </div>
       </footer>
-    </div>);
-
+    </div>
+  );
 }
