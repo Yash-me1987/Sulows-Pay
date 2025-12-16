@@ -68,17 +68,13 @@ export default function SignUpPage() {
         return;
       }
 
-      if (typeof window !== "undefined") {
-        localStorage.setItem("user_role", role!);
-        localStorage.setItem("user_id", data.id);
-        localStorage.setItem("user_name", formData.name);
-      }
+        if (typeof window !== "undefined") {
+          localStorage.setItem("user_role", role!);
+          localStorage.setItem("user_id", data.id);
+          localStorage.setItem("user_name", formData.name);
+        }
 
-      if (role === "acceptor") {
-        router.push("/my-forms");
-      } else {
-        router.push("/");
-      }
+        router.push("/profile");
     } catch (err) {
       setError("Something went wrong. Please try again.");
       setLoading(false);
