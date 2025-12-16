@@ -13,7 +13,14 @@ export default function SignInPage() {
 
   useEffect(() => {
     router.prefetch("/signup");
-    router.prefetch("/");
+    router.prefetch("/profile");
+
+    const userId = localStorage.getItem("user_id");
+    const userRole = localStorage.getItem("user_role");
+    
+    if (userId && userRole) {
+      router.push("/profile");
+    }
   }, [router]);
 
   const handleSignIn = (role: "acceptor" | "user") => {
