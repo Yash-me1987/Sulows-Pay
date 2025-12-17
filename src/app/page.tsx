@@ -27,13 +27,18 @@ export default function Home() {
                 Tailows Pay
               </span>
             </Link>
-            <div className="flex items-center gap-3">
-              <Link href="/signin">
-                <Button className="bg-zinc-900 text-white hover:bg-zinc-800 shadow-sm">
-                  Get Started
-                </Button>
-              </Link>
-            </div>
+              <div className="flex items-center gap-3">
+                <Link href="/signin">
+                  <Button variant="outline" className="border-zinc-300 text-zinc-900 hover:bg-zinc-100">
+                    Sign In
+                  </Button>
+                </Link>
+                <Link href="/signin">
+                  <Button className="bg-zinc-900 text-white hover:bg-zinc-800 shadow-sm">
+                    Get Started
+                  </Button>
+                </Link>
+              </div>
           </div>
         </div>
       </nav>
