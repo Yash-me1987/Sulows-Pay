@@ -12,6 +12,8 @@ export default function Home() {
 
   useEffect(() => {
     router.prefetch("/signin");
+    router.prefetch("/signup");
+    router.prefetch("/profile");
   }, [router]);
 
   return (
